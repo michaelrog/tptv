@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trash TV</title>
+
+  <script type="module" crossorigin src="assets/site.a0e33862.js"></script>
+  <link rel="stylesheet" href="assets/site.7d274bb8.css">
+  <script type="module">!function(){try{new Function("m","return import(m)")}catch(o){console.warn("vite: loading legacy build because dynamic import is unsupported, syntax error above should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}}();</script>
+</head>
+<body>
+
+<div class="!bgLayer / w-full h-full absolute inset-0 z-10">
+    <div id="player"></div>
+</div>
+
+<script>
+
+	var tag = document.createElement('script');
+
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+	var player;
+
+	function onYouTubeIframeAPIReady() {
+		player = new YT.Player('player', {
+			height: '390',
+			width: '640',
+			videoId: 'iH1K95fC4tI',
+			playerVars: {
+				'autoplay': 1,
+				'playsinline': 1,
+				'showinfo': 0,
+				'autohide': 1,
+				'loop': 1,
+				'controls': 0,
+				'modestbranding': 1,
+				'vq': 'hd1080'
+			},
+			events: {
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+			}
+		});
+	}
+
+	function onPlayerReady(event) {
+		event.target.playVideo();
+	}
+
+	function onPlayerStateChange(event) {
+		if (event.data == YT.PlayerState.ENDED) {
+			player.seekTo(0);
+			player.playVideo();
+		}
+	}
+
+	document.addEventListener('click', function(){
+		player.playVideo();
+	});
+
+</script>
+
+<div class="!imageLayer / w-full h-full absolute inset-0 z-20 bg-black/70">
+    <div class="p-20 / w-full h-full flex flex-col justify-center items-center">
+        <img src="assets/tp-sa.be18a1b6.jpg" class="block max-h-full">
+<!--        <img src="images/tp-logo.png" class="block flex-shrink-0">-->
+    </div>
+</div>
+
+
+
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule id="vite-legacy-polyfill" src="assets/polyfills-legacy.0deed1b1.js"></script>
+  <script nomodule id="vite-legacy-entry" data-src="assets/site-legacy.80011374.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

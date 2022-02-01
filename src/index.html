@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trash TV</title>
+
+</head>
+<body>
+
+<div class="!bgLayer / w-full h-full absolute inset-0 z-10">
+    <div id="player"></div>
+</div>
+
+<script>
+
+	var tag = document.createElement('script');
+
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+	var player;
+
+	function onYouTubeIframeAPIReady() {
+		player = new YT.Player('player', {
+			height: '390',
+			width: '640',
+			videoId: 'iH1K95fC4tI',
+			playerVars: {
+				'autoplay': 1,
+				'playsinline': 1,
+				'showinfo': 0,
+				'autohide': 1,
+				'loop': 1,
+				'controls': 0,
+				'modestbranding': 1,
+				'vq': 'hd1080'
+			},
+			events: {
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+			}
+		});
+	}
+
+	function onPlayerReady(event) {
+		event.target.playVideo();
+	}
+
+	function onPlayerStateChange(event) {
+		if (event.data == YT.PlayerState.ENDED) {
+			player.seekTo(0);
+			player.playVideo();
+		}
+	}
+
+	document.addEventListener('click', function(){
+		player.playVideo();
+	});
+
+</script>
+
+<div class="!imageLayer / w-full h-full absolute inset-0 z-20 bg-black/70">
+    <div class="p-20 / w-full h-full flex flex-col justify-center items-center">
+        <img src="images/tp-sa.jpg" class="block max-h-full">
+<!--        <img src="images/tp-logo.png" class="block flex-shrink-0">-->
+    </div>
+</div>
+
+<script type="module" src="/js/site.js"></script>
+
+</body>
+</html>
