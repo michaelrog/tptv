@@ -12,33 +12,8 @@ RUN apk update \
     apk update \
     && \
     apk add --no-cache \
-        # Packages needed for npm install of mozjpeg & cwebp, can't --virtual and apk del later
-        # Pre-builts do not work on alpine for either:
-        # ref: https://github.com/imagemin/imagemin/issues/168
-        # ref: https://github.com/imagemin/cwebp-bin/issues/27
-        autoconf \
-        automake \
-        build-base \
-        g++ \
-        gcc \
-        glu \
-        libc6-compat \
-        libtool \
-        libpng-dev \
-        libxxf86vm \
-        make \
-        nasm \
         # Misc packages
         nano \
-        # Image optimization packages
-        gifsicle \
-        jpegoptim \
-        libpng-dev \
-        libwebp-tools \
-        libjpeg-turbo-dev \
-        libjpeg-turbo-utils \
-        optipng \
-        pngquant \
         # Headless Chrome packages
         chromium \
         harfbuzz \
